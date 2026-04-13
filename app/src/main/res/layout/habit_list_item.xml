@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintHabitItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="6dp"
+    android:paddingTop="8dp"
+    android:paddingEnd="6dp"
+    android:paddingBottom="8dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardHabit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/habit_card_stroke"
+        app:strokeWidth="1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="186dp">
+
+            <View
+                android:id="@+id/viewCompletedAccent"
+                android:layout_width="5dp"
+                android:layout_height="0dp"
+                android:background="@color/habit_completed"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible" />
+
+            <FrameLayout
+                android:id="@+id/layoutHabitIcon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/bg_habit_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imgHabitIcon"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/habit_icon"
+                    android:tint="@color/habit_icon_tint"
+                    tools:srcCompat="@drawable/ic_habit_star" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/txtHabitName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/habit_text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/imgCompletedMark"
+                app:layout_constraintStart_toEndOf="@+id/layoutHabitIcon"
+                app:layout_constraintTop_toTopOf="@+id/layoutHabitIcon"
+                tools:text="Exercise" />
+
+            <ImageView
+                android:id="@+id/imgCompletedMark"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="@string/habit_completed_mark"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/txtHabitName"
+                app:layout_constraintEnd_toStartOf="@+id/txtHabitStatus"
+                app:layout_constraintStart_toEndOf="@+id/txtHabitName"
+                app:layout_constraintTop_toTopOf="@+id/txtHabitName"
+                app:srcCompat="@drawable/ic_habit_check"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/txtHabitDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/habit_text_secondary"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/txtHabitStatus"
+                app:layout_constraintStart_toStartOf="@+id/txtHabitName"
+                app:layout_constraintTop_toBottomOf="@+id/txtHabitName"
+                tools:text="Daily workout routine" />
+
+            <TextView
+                android:id="@+id/txtHabitStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="18dp"
+                android:background="@drawable/bg_habit_status_in_progress"
+                android:paddingStart="12dp"
+                android:paddingTop="6dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="6dp"
+                android:text="@string/habit_status_in_progress"
+                android:textColor="@color/habit_status_in_progress_text"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/layoutHabitIcon"
+                tools:background="@drawable/bg_habit_status_completed"
+                tools:text="Completed"
+                tools:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/txtProgressLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/habit_progress_label"
+                android:textColor="@color/habit_text_secondary"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutHabitIcon" />
+
+            <TextView
+                android:id="@+id/txtHabitProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="18dp"
+                android:textColor="@color/habit_text_primary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/txtProgressLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="15 / 30 minutes" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progressHabit"
+                android:layout_width="0dp"
+                android:layout_height="8dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="18dp"
+                android:max="100"
+                android:progress="50"
+                app:indicatorColor="@color/habit_progress_active"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtProgressLabel"
+                app:trackColor="@color/habit_progress_track"
+                app:trackCornerRadius="4dp"
+                tools:progress="100" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMinusProgress"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="18dp"
+                android:contentDescription="@string/habit_decrease_progress"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="0dp"
+                android:text="-"
+                android:textAllCaps="false"
+                android:textColor="@color/habit_action_muted_icon"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/habit_action_muted_background"
+                app:cornerRadius="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnPlusProgress"
+                app:layout_constraintTop_toBottomOf="@+id/progressHabit"
+                tools:textColor="@color/habit_action_disabled_icon" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPlusProgress"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="18dp"
+                android:layout_marginBottom="18dp"
+                android:contentDescription="@string/habit_increase_progress"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="0dp"
+                android:text="+"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/habit_progress_active"
+                app:cornerRadius="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/progressHabit"
+                tools:backgroundTint="@color/habit_action_muted_background"
+                tools:textColor="@color/habit_action_disabled_icon" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

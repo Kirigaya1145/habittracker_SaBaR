@@ -1,5 +1,24 @@
 <resources>
     <string name="app_name">HabitTracker</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_badge_text">H</string>
+    <string name="login_title">Habit Tracker</string>
+    <string name="login_subtitle">Catat kebiasaan baikmu dan jaga progres setiap hari.</string>
+    <string name="login_form_title">Masuk ke akun</string>
+    <string name="login_form_subtitle">Gunakan username dan password yang sudah ditentukan.</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="login_button">Login</string>
+    <string name="login_error_message">Username atau password salah.</string>
+    <string name="login_demo_account">Demo login: student / 123</string>
+    <string name="dashboard_title">Dashboard</string>
+    <string name="dashboard_subtitle">Halaman ini akan menampilkan daftar habit yang kamu buat.</string>
+    <string name="dashboard_empty_title">Belum ada habit</string>
+    <string name="dashboard_empty_message">Nanti kita bisa tambahkan tombol plus dan daftar habit di sini.</string>
+    <string name="habit_completed_mark">Habit selesai</string>
+    <string name="habit_decrease_progress">Kurangi progress habit</string>
+    <string name="habit_icon">Ikon habit</string>
+    <string name="habit_increase_progress">Tambah progress habit</string>
+    <string name="habit_progress_label">Progress</string>
+    <string name="habit_status_in_progress">In Progress</string>
+    <string name="new_habit_title">Create New Habit</string>
 </resources>

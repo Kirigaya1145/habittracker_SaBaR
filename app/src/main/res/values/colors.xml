@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="dashboard_background">#FFF7F2E8</color>
+    <color name="habit_action_disabled_icon">#FFD3D3D3</color>
+    <color name="habit_action_muted_background">#FFF4F4F4</color>
+    <color name="habit_action_muted_icon">#FFB1B1B1</color>
+    <color name="habit_card_stroke">#FFE6E1DC</color>
+    <color name="habit_completed">#FF72B36B</color>
+    <color name="habit_icon_background">#FFF3ECFB</color>
+    <color name="habit_icon_tint">#FF8D5EDB</color>
+    <color name="habit_progress_active">#FF6B2BE9</color>
+    <color name="habit_progress_track">#FFE7DCF9</color>
+    <color name="habit_status_in_progress_background">#FFF1F1F1</color>
+    <color name="habit_status_in_progress_text">#FF525252</color>
+    <color name="habit_text_primary">#FF3B3B3B</color>
+    <color name="habit_text_secondary">#FF787878</color>
+    <color name="login_background_end">#FFF7E9D3</color>
+    <color name="login_background_start">#FFE9F5F0</color>
+    <color name="login_card_background">#FFFDFBF7</color>
+    <color name="login_card_stroke">#FFD9CDBE</color>
+    <color name="login_error">#FFB3261E</color>
+    <color name="login_hint">#FF817567</color>
+    <color name="login_primary">#FF2E6F58</color>
+    <color name="login_text_primary">#FF2A241D</color>
+    <color name="login_text_secondary">#FF6E645A</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

@@ -55,7 +55,7 @@
                     android:layout_height="26dp"
                     android:layout_gravity="center"
                     android:contentDescription="@string/habit_icon"
-                    android:tint="@color/habit_icon_tint"
+                    app:tint="@color/habit_icon_tint"
                     tools:srcCompat="@drawable/ic_habit_star" />
             </FrameLayout>
 
@@ -166,8 +166,8 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnMinusProgress"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="12dp"
                 android:layout_marginBottom="18dp"
@@ -191,8 +191,8 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnPlusProgress"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="18dp"
                 android:layout_marginBottom="18dp"

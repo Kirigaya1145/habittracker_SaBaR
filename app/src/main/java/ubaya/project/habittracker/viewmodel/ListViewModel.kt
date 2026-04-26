@@ -54,5 +54,17 @@ class ListViewModel (application: Application): AndroidViewModel(application) {
             habitLD.value = list
         }
     }
-
+    fun addHabit(newHabit: Habit) {
+        val json = prefs.getString("habits", null)
+        val currentList: ArrayList<Habit>
+        if (json != null) {
+            val type = object : TypeToken<ArrayList<Habit>>() {}.type
+            currentList = gson.fromJson(json, type)
+        } else {
+            currentList = defaultHabbits()
+        }
+        currentList.add(newHabit)
+        prefs.edit { putString("habits", gson.toJson(currentList)) }
+        habitLD.value = currentList
+    }
 }

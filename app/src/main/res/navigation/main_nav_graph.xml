@@ -36,6 +36,10 @@
         android:id="@+id/newHabitFragment"
         android:name="ubaya.project.habittracker.view.NewHabitFragment"
         android:label="@string/new_habit_title"
-        tools:layout="@layout/fragment_new_habit" />
+        tools:layout="@layout/fragment_new_habit" >
+        <action
+            android:id="@+id/action_newHabitFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
 
 </navigation>

@@ -37,6 +37,8 @@ class HabitListAdapter (val habitList:ArrayList<Habit>)
             icon = R.drawable.ic_water_drop
         }else if (habitList[position].icon == "book"){
             icon = R.drawable.ic_book
+        } else if (habitList[position].icon == "food"){
+            icon = R.drawable.ic_food
         } else{
             icon = R.drawable.ic_habit_star
         }

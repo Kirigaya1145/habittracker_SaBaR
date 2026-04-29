@@ -9,10 +9,10 @@ import ubaya.project.habittracker.databinding.HabitListItemBinding
 import ubaya.project.habittracker.model.Habit
 import ubaya.project.habittracker.viewmodel.ListViewModel
 
-class HabitListAdapter (val habitList:ArrayList<Habit>)
+class HabitListAdapter (val habitList:ArrayList<Habit>, val viewModel: ListViewModel)
     :RecyclerView.Adapter<HabitListAdapter.HabitViewHolder>()
 {
-    lateinit var viewModel: ListViewModel
+
     class HabitViewHolder(var binding: HabitListItemBinding)
         : RecyclerView.ViewHolder(binding.root)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HabitViewHolder {

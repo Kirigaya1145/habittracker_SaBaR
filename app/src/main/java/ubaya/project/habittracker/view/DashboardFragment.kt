@@ -15,7 +15,7 @@ import ubaya.project.habittracker.viewmodel.ListViewModel
 
 class DashboardFragment : Fragment() {
     private lateinit var viewModel: ListViewModel
-    private val habitAdapter = HabitListAdapter(arrayListOf())
+    private lateinit var habitAdapter: HabitListAdapter
     private lateinit var binding: FragmentDashboardBinding
 
     override fun onCreateView(
@@ -30,7 +30,7 @@ class DashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
-        habitAdapter.viewModel = viewModel
+        habitAdapter = HabitListAdapter(arrayListOf(), viewModel)
 
         observeViewModel()
 

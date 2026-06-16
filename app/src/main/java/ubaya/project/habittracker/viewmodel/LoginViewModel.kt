@@ -11,6 +11,7 @@ import kotlinx.coroutines.launch
 import ubaya.project.habittracker.model.UserDao
 import ubaya.project.habittracker.model.UserDatabase
 import ubaya.project.habittracker.model.Users
+import ubaya.project.habittracker.util.buildDb
 import kotlin.coroutines.CoroutineContext
 
 class LoginViewModel(application: Application)
@@ -37,7 +38,7 @@ class LoginViewModel(application: Application)
             }
             val user = userDao.login(username, password)
             if(user != null){
-                prefs.edit().putBoolean("isLoggedIn", true).apply()
+                userDao.setLoggedIn(username)
                 loginResultLD.postValue(true)
             }else{
                 loginResultLD.postValue(false)
@@ -46,9 +47,13 @@ class LoginViewModel(application: Application)
         }
     }
     fun isLoggenIn(): Boolean{
-        return prefs.getBoolean("isLoggedIn", false)
+        val db = buildDb(getApplication())
+        return db.userDao().getLoggedInUser() != null
     }
     fun logOut(){
-        prefs.edit().putBoolean("isLoggedIn", false).apply()
+        launch {
+            val db = buildDb(getApplication())
+            db.userDao().setLoggedOut()
+        }
     }
 }

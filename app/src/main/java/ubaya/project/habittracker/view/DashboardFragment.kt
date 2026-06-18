@@ -29,8 +29,12 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get(ListViewModel::class.java)
+//        viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
         habitAdapter = HabitListAdapter(arrayListOf(), viewModel)
+
+        binding.recExerciseView.layoutManager = LinearLayoutManager(context)
+        binding.recExerciseView.adapter = habitAdapter
 
         observeViewModel()
 
@@ -39,8 +43,7 @@ class DashboardFragment : Fragment() {
             binding.refreshLayout.isRefreshing = false
         }
 
-        binding.recExerciseView.layoutManager = LinearLayoutManager(context)
-        binding.recExerciseView.adapter = habitAdapter
+
 
         binding.fab.setOnClickListener {
             Navigation.findNavController(it).navigate(
@@ -52,6 +55,7 @@ class DashboardFragment : Fragment() {
     fun observeViewModel() {
         viewModel.habitLD.observe(viewLifecycleOwner, Observer{
             habitAdapter.updateHabitList(it)
+            binding.refreshLayout.isRefreshing = false
         })
         viewModel.loadingLD.observe(viewLifecycleOwner, Observer {
             if (it == true) {

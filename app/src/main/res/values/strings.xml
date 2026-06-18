@@ -20,6 +20,7 @@
     <string name="habit_increase_progress">Tambah progress habit</string>
     <string name="habit_progress_label">Progress</string>
     <string name="habit_status_in_progress">In Progress</string>
+    <string name="habit_status_completed">Completed</string>
     <string name="new_habit_title">Create New Habit</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

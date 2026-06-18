@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import ubaya.project.habittracker.databinding.FragmentNewHabitBinding
 import androidx.navigation.NavController
@@ -20,6 +21,7 @@ import ubaya.project.habittracker.viewmodel.ListViewModel
 class NewHabitFragment : Fragment() {
     private lateinit var navController: NavController
     private lateinit var binding: FragmentNewHabitBinding
+    private lateinit var viewModel: ListViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,13 +35,18 @@ class NewHabitFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get(ListViewModel::class.java)
+//        val viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
         binding.button.setOnClickListener {
             val name = binding.txtName.text.toString()
             val desc = binding.txtDesc.text.toString()
             val goal = binding.txtGoal.text.toString().toIntOrNull() ?: 0
-            val unit = binding.txtUnit.text.toString()
+            val unit = binding.txtUnit.text.toString().trim()
             val icon = binding.ddlIcon.text.toString().lowercase()
+            if (name.isEmpty() || desc.isEmpty() || goal == null || unit.isEmpty() || icon.isEmpty()) {
+                Toast.makeText(requireContext(), "Semua field wajib diisi!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             val newHabit = Habit(
                 id = System.currentTimeMillis().toString(),
                 nama = name,

@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.room.InvalidationTracker
 import ubaya.project.habittracker.R
 import ubaya.project.habittracker.databinding.FragmentLoginBinding
 import ubaya.project.habittracker.viewmodel.LoginViewModel
@@ -32,14 +31,15 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-        if(viewModel.isLoggenIn()){
-            findNavController().navigate(R.id.action_loginFragment_to_dashboardFragment)
-            return
-        }
+
+        observeViewModel()
+
+        // Cek status login secara async lewat LiveData, bukan langsung return Boolean
+        viewModel.checkIsLoggedIn()
+
         binding.btnLogin.setOnClickListener {
             checkLogin()
         }
-        observeViewModel()
     }
 
     private fun checkLogin() {
@@ -59,18 +59,16 @@ class LoginFragment : Fragment() {
             return
         }
         viewModel.login(username, password)
-
-//        val isLoginValid = loginAccounts.any { account ->
-//            account[0] == username && account[1] == password
-//        }
-//
-//        if (isLoginValid) {
-//            findNavController().navigate(R.id.action_loginFragment_to_dashboardFragment)
-//        } else {
-//            binding.textInputLayout2.error = "Username atau password salah"
-//        }
     }
+
     fun observeViewModel(){
+        // Hasil pengecekan auto-login (session masih aktif)
+        viewModel.isLoggedInLD.observe(viewLifecycleOwner, Observer { isLoggedIn ->
+            if (isLoggedIn == true) {
+                findNavController().navigate(R.id.action_loginFragment_to_dashboardFragment)
+            }
+        })
+
         viewModel.loginResultLD.observe(viewLifecycleOwner, Observer{
             if(it == true){
                 findNavController().navigate(R.id.action_loginFragment_to_dashboardFragment)

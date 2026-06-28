@@ -23,9 +23,11 @@ class LoginViewModel(application: Application)
 
     val loginResultLD = MutableLiveData<Boolean>()
     val loadingLD = MutableLiveData<Boolean>()
+    val isLoggedInLD = MutableLiveData<Boolean>()
 
     private val prefs = getApplication<Application>().
     getSharedPreferences("session", Context.MODE_PRIVATE)
+
     fun login(username: String, password: String){
         loadingLD.value = true
 
@@ -46,10 +48,17 @@ class LoginViewModel(application: Application)
             loadingLD.postValue(false)
         }
     }
-    fun isLoggenIn(): Boolean{
-        val db = buildDb(getApplication())
-        return db.userDao().getLoggedInUser() != null
+
+    // Diubah dari Boolean langsung (blocking main thread) menjadi LiveData
+    // supaya query Room tidak dipanggil synchronous di main thread.
+    fun checkIsLoggedIn(){
+        launch {
+            val db = buildDb(getApplication())
+            val loggedIn = db.userDao().getLoggedInUser() != null
+            isLoggedInLD.postValue(loggedIn)
+        }
     }
+
     fun logOut(){
         launch {
             val db = buildDb(getApplication())

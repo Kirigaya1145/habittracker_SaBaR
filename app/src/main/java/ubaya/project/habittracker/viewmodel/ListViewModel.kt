@@ -19,6 +19,7 @@ import ubaya.project.habittracker.model.HabitDatabase
 class ListViewModel (application: Application): AndroidViewModel(application) {
     val habitLD = MutableLiveData<ArrayList<Habit>>()
     val loadingLD = MutableLiveData<Boolean>()
+    val selectedHabitLD = MutableLiveData<Habit>()
 
     private val db = HabitDatabase(application)
     //val prefs = getApplication<Application>().getSharedPreferences("habits_prefs", Context.MODE_PRIVATE)
@@ -90,6 +91,14 @@ class ListViewModel (application: Application): AndroidViewModel(application) {
         viewModelScope.launch(Dispatchers.IO) {
             db.habitDao().update(updatedHabit)
             refresh()
+        }
+    }
+    fun fetchHabitById(id: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val habit = db.habitDao().getHabitById(id)
+            withContext(Dispatchers.Main) {
+                selectedHabitLD.value = habit
+            }
         }
     }
     fun defaultHabits() = arrayListOf(

@@ -30,6 +30,9 @@
             android:id="@+id/action_dashboardFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_editHabitFragment"
+            app:destination="@id/editHabitFragment" />
     </fragment>
 
     <fragment
@@ -40,6 +43,17 @@
         <action
             android:id="@+id/action_newHabitFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editHabitFragment"
+        android:name="ubaya.project.habittracker.view.EditHabitFragment"
+        android:label="EditHabitFragment" >
+        <action
+            android:id="@+id/action_editHabitFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+        <argument
+            android:name="habitId"
+            app:argType="string" />
     </fragment>
 
 </navigation>

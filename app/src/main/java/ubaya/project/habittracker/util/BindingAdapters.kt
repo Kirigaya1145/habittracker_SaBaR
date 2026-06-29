@@ -20,13 +20,11 @@ object Converters {
     @InverseMethod("stringToInt")
     @JvmStatic
     fun intToString(value: Int): String {
-        // Karena Int primitif tidak mungkin null, langsung konversi ke String
         return value.toString()
     }
 
     @JvmStatic
     fun stringToInt(value: String): Int {
-        // Jika text kosong, langsung kembalikan angka 0 agar tidak crash
         if (value.isBlank()) return 0
         return value.toIntOrNull() ?: 0
     }

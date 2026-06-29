@@ -31,7 +31,6 @@ class HabitListAdapter (val habitList:ArrayList<Habit>, val viewModel: ListViewM
         holder.binding.executePendingBindings()
 
         holder.binding.txtHabitName.setOnClickListener {
-            val argumentId = habitList[position].id.toString()
             val action = DashboardFragmentDirections
                .actionDashboardFragmentToEditHabitFragment(habitList[position].id.toString())
             Navigation.findNavController(it).navigate(action)
